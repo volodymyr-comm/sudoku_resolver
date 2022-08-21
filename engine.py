@@ -86,8 +86,8 @@ def _resolve_by_possibility_matrix(found_matrix: np.ndarray, possibility_matrix:
                     continue
                 _cell_possibilities = _possibility_matrix[:, y, x]
                 _cell_possibilities = _cell_possibilities[~np.isnan(_cell_possibilities)]
-                assert nof_possibilities != len(_cell_possibilities), 'Invalid possibilities count'
-                assert len(_cell_possibilities) == 1 and np.isnan(_found_matrix[y, x]), 'Something wrong happened in dependency analysis part of code'
+                assert nof_possibilities == len(_cell_possibilities), 'Invalid possibilities count'
+                assert not (len(_cell_possibilities) == 1 and np.isnan(_found_matrix[y, x])), 'Something wrong happened in dependency analysis part of code'
                 if len(_cell_possibilities) < 2:
                     continue
                 for appointed_possibility in _cell_possibilities:
