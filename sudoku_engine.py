@@ -94,6 +94,7 @@ class SudokuEngineGUI(QtWidgets.QWidget):
             self, 'Open File', '', 'CSV(*.csv)')
         if path != '':
             with open(path, 'r') as stream:
+                self.data = np.full((9, 9), np.nan)
                 self.table.setRowCount(0)
                 self.table.setColumnCount(0)
                 for rowdata in csv.reader(stream):
